@@ -1,0 +1,18 @@
+create table board(
+	num number(8) primary key not null,
+	title varchar2(40),
+	writer varchar2(16),
+	contents varchar2(800)
+);
+
+create table member(
+	num number(8) primary key not null,
+	id varchar2(20) not null,
+	password varchar2(20) not null,
+	email varchar2(40),
+	gender varchar2(1),
+	name varchar2(16)
+);
+
+select * from board;
+select * from member;

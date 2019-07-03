@@ -1,0 +1,7 @@
+select * from freeboard;
+
+select count(num) from freeboard;
+
+select * from (select rownum R, N.* from
+(select * from freeboard where title like '%t%' order by num desc)N)
+where R between 1 and 2;

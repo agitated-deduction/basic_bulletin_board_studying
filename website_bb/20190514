@@ -1,0 +1,7 @@
+alter table board rename to freeboard;
+
+select * from freeboard;
+
+create sequence seq_board 
+start with 1 
+increment by 1;
