@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -22,8 +26,9 @@
 		<input type = "text" name = "search" value = "">
 		<input type = "submit" value = "검색">
 	</form>
+	<p align="right"><a href = "./boardWrite.${board}"class="btn btn-default" role="button" >글 쓰기</a></p> 
 	
-	<table>
+	<table class = "table table-hover">
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -46,19 +51,22 @@
 		</tbody>
 	</table>
 	<br>
+	<div class= "container">
+	<ul class = "pagination">
 	<c:if test = "${startPage !=1}">
-	<a href = "boardList.${board }?curPage=${startPage-1 }&search=${saerch }&searchBy=${searchBy }">[이전]</a>
+	<li><a href = "boardList.${board }?curPage=${startPage-1 }&search=${saerch }&searchBy=${searchBy }">이전</a></li>
 	</c:if>
 	<c:forEach var="i" begin="${startPage}" end= "${endPage}">
-	|	<a href = "boardList.${board}?curPage=${i}&search=${saerch }&searchBy=${searchBy }">${i}</a>
+	<li><a href = "boardList.${board}?curPage=${i}&search=${saerch }&searchBy=${searchBy }">${i}</a></li>
 	</c:forEach>
-	|
+
 	<c:if test = "${endPage!=totalPage}">
-	<a href = "boardList.${board }?curPage=${endPage+1 }&search=${saerch }&searchBy=${searchBy }">[다음]</a>
+	<li><a href = "boardList.${board }?curPage=${endPage+1 }&search=${saerch }&searchBy=${searchBy }">다음</a></li>
 	</c:if>
+	</ul>
 	<br>
-	
+	</div>
 	<!-- 1. board== freeboard 2. board== notice && session id == admin 두가지 경우만 버튼 보이도록 설정할 것!-->
-	<a href = "./boardWrite.${board}">WRITE</a>
+	
 </body>
 </html>

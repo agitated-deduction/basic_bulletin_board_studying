@@ -89,6 +89,7 @@ public class FreeboardService implements BoardService{
 
 	@Override
 	public ActionForward delete(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		
 		int num = Integer.parseInt(request.getParameter("num"));
 		
 		int result = dao.delete(num);
@@ -108,8 +109,14 @@ public class FreeboardService implements BoardService{
 	}
 
 	@Override
-	public ActionForward selectList(HttpServletRequest request, HttpServletResponse response) {
-		
+	public ActionForward selectList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		/*for(int i = 0; i < 100; i++) {
+			BoardDTO d = new FreeboardDTO();
+			d.setTitle("test"+i);
+			d.setWriter("tester"+i);
+			d.setContents(i+i+i+i+i+"\nthis is test code for a lot of contents\ndshfldksfhldksflsdjkghejfjds fsdhfjh fdsk dfhksd fdsf dk");
+			dao.insert(d);
+		}*/
 		//ActionForward actionForward = new ActionForward();
 		//FreeboardDAO dao = new FreeboardDAO();
 		List<BoardDTO> freeboardList = new ArrayList<BoardDTO>();
@@ -130,13 +137,13 @@ public class FreeboardService implements BoardService{
 		
 		try {
 					
-			int totalPage = dao.getTotal(searchBy, search)/(contPerPage+1)+1;
+			int totalPage = (int) Math.ceil(dao.getTotal(searchBy, search)/(contPerPage));
 			int pagePerBlock = 5; //한 블럭당 페이지 인덱스 5개로 제한 , 테스트 위해 작은 수로 제한함
 			//int totalBlock = totalPage%(pagePerBlock+1);
-			int startPage = curPage/pagePerBlock+1;
+			int startPage = pagePerBlock*((curPage-1)/pagePerBlock)+1;
 			int endPage = startPage+pagePerBlock-1;
 			if (endPage>totalPage) endPage = totalPage;
-			
+			//System.out.println(" to page : "+ totalPage +", startPage: "+ startPage);
 			freeboardList = dao.selectList(startRow, endRow, searchBy, search);
 			request.setAttribute("dtoList", freeboardList);
 			

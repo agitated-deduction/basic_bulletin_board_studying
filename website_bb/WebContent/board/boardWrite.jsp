@@ -10,16 +10,24 @@
 </head>
 <body>
 <%@include file = "../header.jsp" %>
+<div class = "container">
 	<h1>${board} WRITE FORM</h1>
 
 			<form action = "boardWrite.${board}" method = "POST">
-				title  <input type = "text" name = "title"><br>
-				writer  <input type = "text" name = "writer"><br>
-				<br>contents<br>
-				<textarea cols = "100" rows = "20" name = "contents"></textarea><br>
-				<button>Write</button>	
+			<div class = "form-group">
+					<label for ="title">title</label> <input type = "text" class = "form-control" name = "title">
+			</div>
+			<div class = "form-group">
+			
+				<label for = "writer">writer</label>  <input type = "text" class = "form-control" name = "writer">
+			</div>
+			<div class = "form-group">
+				<label for = "contents">contents</label>
+				<textarea class="form-control" rows="10" id="contents" name = "contents"></textarea>
+			</div>
+				<button type="submit" class="btn btn-default">Write</button>
 			</form>
 	
-		
+		</div>
 </body>
 </html>

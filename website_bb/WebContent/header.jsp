@@ -5,20 +5,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="<%=request.getContextPath()%>/index.jsp">HOME</a>
-	<a href="<%=request.getContextPath()%>/board/boardList.notice">Notice</a>
-	<a href="<%=request.getContextPath()%>/board/boardList.freeboard">Free Board</a>
-	<a href="<%=request.getContextPath()%>/board/boardList.qna">QnA</a>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+
+	<a class= "navbar-brand" href="<%=request.getContextPath()%>/index.jsp">my first web site</a>
+	</div>
+	<div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <li class="active"><a href = "<%=request.getContextPath()%>/index.jsp">HOME</a>
+	<li><a href="<%=request.getContextPath()%>/board/boardList.notice">Notice</a></li>
+	<li><a href="<%=request.getContextPath()%>/board/boardList.freeboard">Free Board</a></li>
+	<!--  <a href="<%=request.getContextPath()%>/board/boardList.qna">QnA</a>-->
 	<c:if test = "${empty memberDTO}">
-		<a href="<%=request.getContextPath()%>/member/memberJoin.member">Join</a>
-		<a href="<%=request.getContextPath()%>/member/memberLogin.member">Login</a>
+		<ul class="nav navbar-nav navbar-right">
+		<li><a href="<%=request.getContextPath()%>/member/memberJoin.member">
+		<span class="glyphicon glyphicon-user"></span>Join</a></li>
+		<li><a href="<%=request.getContextPath()%>/member/memberLogin.member">
+		<span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+		</ul>
 	</c:if>
 	<c:if test = "${not empty memberDTO}">
-		<a href="<%=request.getContextPath()%>/member/memberMyPage.member">My Page</a>
-		<a href="<%=request.getContextPath()%>/member/memberLogout.member">Logout</a>
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="<%=request.getContextPath()%>/member/memberMyPage.member">
+		<span class="glyphicon glyphicon-user"></span>My Page</a></li>
+		<li><a href="<%=request.getContextPath()%>/member/memberLogout.member">
+		<span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+	</ul>
 	</c:if>
+	</ul>
+	</div>
+	</div>
+	</nav>
 </body>
 </html>

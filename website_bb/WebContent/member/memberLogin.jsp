@@ -5,26 +5,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>login page</title>
 </head>
 <body>
 <%@include file = "../header.jsp" %>
+<div class="container">
 	<h1>LOGIN PAGE</h1>
 	<form action ="memberLogin.member" method = "POST">
-		ID <input type = "text" name= "id" value = "${cookieID }"><br>
-		password <input type = "password" name = "password"><br>
+	<div class="form-group">
+		 <label for="id">ID:</label><input type = "text" class = "form-control" name= "id" value = "${cookieID }">
+		 </div>
+		 <div class="form-group">
+		 <label for="password">password:</label><input type = "password" class = "form-control" name= "password">
+		 </div>
+		<div class = "checkbox">
 		<c:choose>
 			<c:when test = "${cookieID eq null}">
 				<input type = "checkbox" name = "remember" >remember me <br>
 			</c:when>
 		
 			<c:otherwise>
-				<input type = "checkbox" name = "remember" checked="checked">remember me <br>
+				<label></label><input type = "checkbox" name = "remember" checked="checked">remember me 
 		
 			</c:otherwise>
 		</c:choose>
-		<input type ="submit" value = "login">
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
 	</form>
-
+</div>
 </body>
 </html>
